@@ -3,18 +3,19 @@
 Demonstrate Vault's ability to dynamically manage Postgres users via the [Vault Database Secrets Engine](https://developer.hashicorp.com/vault/tutorials/db-credentials/database-secrets).
 
 ## Setup
-`docker compose -f compose.yml up -d`
-`./vault_init.sh`
+
+1) `docker compose -f compose.yml up -d`
+1) `./vault_init.sh`
 
 ## Test
 (requires vault and psql)
 
-`vault login -method=userpass username=vaultpg password=vaultpg`
-`vault read database/creds/readonly`
-`psql 'postgres://127.0.0.1:5432/postgres' -U <dynamic read-only username generated from previous vault command>`
+1) `vault login -method=userpass username=vaultpg password=vaultpg`
+1) `vault read database/creds/readonly`
+1) `psql 'postgres://127.0.0.1:5432/postgres' -U <dynamic read-only username generated from previous vault command>`
 
 ## Teardown
-`docker compose -f compose.yml down`
+1) `docker compose -f compose.yml down`
 
 ## Example
 ```
